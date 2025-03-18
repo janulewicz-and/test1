@@ -21,4 +21,4 @@ function pow(b) {
 }
 
 let arg1 = +prompt('введите свое число', '');
-alert(pow(arc1));
+alert(pow(arg1));
