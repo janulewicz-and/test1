@@ -20,5 +20,5 @@ function pow(b) {
     return result
 }
 
-let arc1 = +prompt('введите свое сранное число', '');
+let arg1 = +prompt('введите свое сранное число', '');
 alert(pow(arc1));
