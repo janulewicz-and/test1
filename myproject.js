@@ -8,3 +8,17 @@ ask('are you agree?',
        () => alert('no')
        
       );
+
+
+console.log('Updated version');
+
+function pow(b) {
+    let result = 1;
+    for (let i = 1; i < b; i++) {
+        result *= i;
+}
+    return result
+}
+
+let arc1 = +prompt('введите свое сранное число', '');
+alert(pow(arc1));
