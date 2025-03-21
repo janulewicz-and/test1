@@ -1,17 +1,13 @@
 function word(a, b){
-    if(b.length > a.lengnt){
+    if(b.length > a.length){
          return false;
     }
     for(let i = b.length - 1; i >= 0; i--){
-        if(a[i] !== b[i]){
+        if (a[a.length - b.length + i] !== b[i]){
         return(false);
         }
-        return(true);
 }
-}
-
-function number(a){
-    for(let i = a; i >= 0; i--)
+return true;
 }
 
-console.log(number(10));
+console.log(word('vlad', 'lad'))
