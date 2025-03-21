@@ -11,3 +11,6 @@ return true;
 }
 
 console.log(word('vlad', 'lad'))
+console.log(word('zalupa', 'lupa'))
+console.log(word('my name is vlad', 'my name is andrey'))
+console.log(word('volga', 'vol'))
