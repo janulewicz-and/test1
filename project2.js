@@ -21,4 +21,15 @@ function makeChair(p){
     return result;
 }
 
-console.log(makeChair(10));
+
+function countVowels(q){
+    let result = 0;
+    for(let i = 0; i <= q.length - 1; i++){
+        if(q[i] === 'a' || q[i] === 'e' || q[i] === 'o' || q[i] === 'u' || q[i] === 'i'){
+            result += 1;
+        }    
+    }
+    return result;
+}
+
+console.log(countVowels('hello world'))
