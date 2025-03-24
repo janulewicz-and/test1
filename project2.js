@@ -10,7 +10,15 @@ function word(a, b){
 return true;
 }
 
-console.log(word('vlad', 'lad'))
-console.log(word('zalupa', 'lupa'))
-console.log(word('my name is vlad', 'my name is andrey'))
-console.log(word('volga', 'vol'))
+function stair(p){
+    let result = '';
+    for(let i = 1; i <= p; i++){
+        for(let j = 1; j <= i; j++){
+            result += j + ' ';
+        }
+    result += '\n';
+}
+return result;
+}
+
+console.log(stair(10));
