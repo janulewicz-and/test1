@@ -22,10 +22,18 @@ function makeChair(p){
 }
 
 
+let dictionary = {
+    a: 'a',
+    e: 'e',
+    o: 'o',
+    u: 'u',
+    i: 'i',
+}
+
 function countVowels(q){
     let result = 0;
     for(let i = 0; i <= q.length - 1; i++){
-        if(q[i] === 'a' || q[i] === 'e' || q[i] === 'o' || q[i] === 'u' || q[i] === 'i'){
+        if(q[i] in dictionary){
             result += 1;
         }    
     }
