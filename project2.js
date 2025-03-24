@@ -10,7 +10,7 @@ function lettersCheck(a, b){
 return true;
 }
 
-function MakeChair(p){
+function makeChair(p){
     let result = '';
     for(let i = 1; i <= p; i++){
         for(let j = 1; j <= i; j++){
@@ -21,4 +21,4 @@ function MakeChair(p){
     return result;
 }
 
-console.log(stair(10));
+console.log(makeChair(10));
