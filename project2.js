@@ -28,6 +28,11 @@ let dictionary = {
     o: 'o',
     u: 'u',
     i: 'i',
+    A: 'A',
+    E: 'E',
+    O: 'O',
+    U: 'U',
+    I: 'I',
 }
 
 function countVowels(q){
@@ -40,4 +45,16 @@ function countVowels(q){
     return result;
 }
 
-console.log(countVowels('hello world'))
+
+function countVowels1(q){
+    let letters = 'aeouiAEOUI';
+    let result = 0;
+    for(let i = 0; i <= q.length; i++){
+        if(letters.includes(q[i])){
+            result += 1;
+        }    
+    }
+    return result;
+}
+
+console.log(countVowels1('HELLO WORLD'))
