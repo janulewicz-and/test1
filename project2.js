@@ -57,4 +57,16 @@ function countVowels1(q){
     return result;
 }
 
-console.log(countVowels1('HELLO WORLD'))
+function INC(a, b){
+    for(let i = 0; i < a.length; i++){
+        let result = '';
+      for(let j = 0; j < b.length; j++){
+        let newindex = i + j;
+        result += a[newindex];
+        }
+        if(result === b){
+            return true;
+        }
+    }   
+    return false;
+}
