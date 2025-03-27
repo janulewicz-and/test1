@@ -57,7 +57,7 @@ function countVowels1(q){
     return result;
 }
 
-function INC(a, b){
+function includes(a, b){
     for(let i = 0; i < a.length; i++){
         let result = '';
       for(let j = 0; j < b.length; j++){
@@ -70,3 +70,14 @@ function INC(a, b){
     }   
     return false;
 }
+
+function conctat(...args){
+    result = '';
+    for(i = 0; i < args.length; i ++){
+        result += args[i] + ' ';
+    }
+    return result;
+}
+
+
+console.log(concat('papa','mama','sobaka','!'))
