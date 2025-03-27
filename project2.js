@@ -72,8 +72,8 @@ function includes(a, b){
 }
 
 function concat(...args){
-    result = '';
-    for(i = 0; i < args.length; i ++){
+    let result = '';
+    for(let i = 0; i < args.length; i ++){
         result += args[i];
     }
     return result;
