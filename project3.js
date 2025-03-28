@@ -1,29 +1,56 @@
-function substring(a, b, c){
-    if(a === b){
-        return '';
-    } else if(b === undefined){
-        b = a.length;
-    } else if(isNaN(c) || c <= 0){
-        c = 0;
-    } else if(isNaN(b) || b <= 0){
-        b = 0
-    } else if( a.length < b){
-        b = a.length;
-    } else if(a.length < c){
-        c = a.length;
-    } else if(b > c){
-        let b1 = b;
-        b = c;
-        c = b1;
-    }
-        let result ='';
-        for(let i = b; i < c; i++){
-            result += a[i];
+function trimStart(a){
+    result= "";
+    let i = 0;
+    for(; i < a.length; i++){
+        if(a[i] !== ' '){
+            break;
         }
+    }
+    for(let j = i; j < a.length; j++){
+        result += a[j];
+    }
     return result;
 }
-        
 
-var anyString = "квадроцикл";
-console.log(anyString.substring(5, 'dasdas'));
+function trimEnd(a){
+    let result= "";
+    let i = a.length - 1;
+    for(; i > 0; i--){
+        if(a[i] !== ' '){
+            break;
+        }
+    }
+    for(let j = 0; j <= i; j++){
+        result += a[j];
+    }
+    return result;
+}
 
+function trim(a){
+    let result1 = "";
+    let result = '';
+    let i = 0;
+    for(; i < a.length; i++){
+        if(a[i] !== ' '){
+            break;
+        }
+    }
+    for(let j = i; j < a.length; j++){
+        result1 += a[j];
+    }
+
+    let y = a.length - 1;
+    for(; y > 0; y--){
+        if(a[y] !== ' '){
+            break;
+        }
+    }
+    for(let u = i; u <= y; u++){
+        result += a[u];
+    }
+    return result;
+}
+
+
+
+console.log(trim('  квадроцикл би би би    '));
