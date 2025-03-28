@@ -94,7 +94,10 @@ function repeat(a,b){
 }
 
 function substring(a, b, c){
-    if(b === undefined || c === undefined){
+    if(c === undefined){
+        c = a.length;
+    }
+    if(b === undefined){
         return a;
     }
     if(typeof b !== 'number' || typeof c !== 'number' || a.length < c || a.length < b || c < b || b < 0 || c < 0){
@@ -106,6 +109,5 @@ function substring(a, b, c){
         }
     return result;
 }
-        
 
-console.log(substring('квадроцикл', 1, 7))
+console.log(substring('квадроцикл', 15, 7))
