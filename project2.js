@@ -79,5 +79,33 @@ function concat(...args){
     return result;
 }
 
+function repeat(a,b){
+    let result = '';
+    if(b < 0 || typeof b !== number || b > Infinity ){
+        return false;
+    }
+    if(typeof a !== 'string'){
+        return false;
+    }
+    for(let i = 0; i < Math.floor(b); i++){
+        result += a;
+    }
+    return result;
+}
 
-console.log(concat('papa','mama','sobaka','!'))
+function substring(a, b, c){
+    if(b === undefined || c === undefined){
+        return a;
+    }
+    if(typeof b !== 'number' || typeof c !== 'number' || a.length < c || a.length < b || c < b || b < 0 || c < 0){
+        return false;
+    }
+        let result ='';
+        for(let i = b; i < c; i++){
+            result += a[i];
+        }
+    return result;
+}
+        
+
+console.log(substring('квадроцикл', 1, 7))
