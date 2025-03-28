@@ -94,14 +94,22 @@ function repeat(a,b){
 }
 
 function substring(a, b, c){
-    if(c === undefined){
+    if(a === b){
+        return '';
+    } else if(b === undefined){
+        b = a.length;
+    } else if(isNaN(c) || c <= 0){
+        c = 0;
+    } else if(isNaN(b) || b <= 0){
+        b = 0
+    } else if( a.length < b){
+        b = a.length;
+    } else if(a.length < c){
         c = a.length;
-    }
-    if(b === undefined){
-        return a;
-    }
-    if(typeof b !== 'number' || typeof c !== 'number' || a.length < c || a.length < b || c < b || b < 0 || c < 0){
-        return false;
+    } else if(b > c){
+        let b1 = b;
+        b = c;
+        c = b1;
     }
         let result ='';
         for(let i = b; i < c; i++){
