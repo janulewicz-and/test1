@@ -1,12 +1,8 @@
-function concat(arr, ...items){
-    let copyOfArr = [];
-    for(let i = 0; i < arr.length; i++ ){
-        copyOfArr.push(arr[i]);
-    }
-    for(let i = 0; i < items.length; i++){
-        for(let j = 0; j < items[i].length; j++){
-            copyOfArr.push(items[i][j]);
-        }
-    }
-    return copyOfArr
+let words = [1, 5, 3, 5, 2];
+console.log(arr(words, 15));
+
+
+function arr(arr, number){
+    if(arr.indexOf(number) !== -1) return true;
+    else  return false;
 }
