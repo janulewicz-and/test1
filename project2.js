@@ -212,6 +212,7 @@ if(items !== undefined){
 }
 
 function slice(arr, start, end){
+    if(typeof start !== 'number'|| typeof end !== 'number') return false;
     let result = [];
     for(let i = start; i < end; i++){
         result.push(arr[i])
