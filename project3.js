@@ -1,10 +1,11 @@
-function prepend(arr, ...items){
-    let result;
-    for(let i = 0; i < items.length; i++){
-        let j = items[i];
-        arr.unshift(j);
+function slice(arr, start, end){
+    let result = [];
+    for(let i = start; i < end; i++){
+        result.push(arr[i])
     }
-    return arr
+    return result;
 }
-let massive = ["js", "react"]
-console.log(prepend( massive, 'cat', 'dog', 'mouse', 'bird'))
+
+let arr = [1, 2, 3, 4, 5, 6]
+
+console.log(slice(arr, 2, 4))

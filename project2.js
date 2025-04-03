@@ -181,5 +181,40 @@ function trim(a){
 }
 
 
+function splice(arr, start, number, ...items){
+    if(typeof start !== 'number' || typeof number !== 'number') return false;
+if(start < 0){
+    start = arr.length + start;
+    if(start < 0) start = 0;
+}
+resultOfLoops = [];
+let resultOfFirstLoop = [];
+let resultOfSecondLoop = [];
+let removed = [];
+for(let i = 0; i < start; i++){
+    resultOfFirstLoop.push(arr[i]);
+}
+for(let i = start; i <start + number; i++){
+    removed.push(arr[i]);
+}
+for(let i = start + number; i < arr.length; i++){
+    resultOfSecondLoop.push(arr[i]);
+}
+resultOfLoops = resultOfFirstLoop.concat(resultOfSecondLoop);
+if(items !== undefined){
+    resultOfFirstLoop.push(...items);
+    let fullArr = resultOfFirstLoop.concat(resultOfSecondLoop);
+    return fullArr
+} else return 
+    {resultOfLoops, 
+    removed
+};
+}
 
-console.log(trim('  квадроцикл би би би    '));
+function slice(arr, start, end){
+    let result = [];
+    for(let i = start; i < end; i++){
+        result.push(arr[i])
+    }
+    return result;
+}
