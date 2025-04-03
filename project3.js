@@ -1,11 +1,12 @@
-function slice(arr, start, end){
-    let result = [];
-    for(let i = start; i < end; i++){
-        result.push(arr[i])
+function concat(arr, ...items){
+    let copyOfArr = [];
+    for(let i = 0; i < arr.length; i++ ){
+        copyOfArr.push(arr[i]);
     }
-    return result;
+    for(let i = 0; i < items.length; i++){
+        for(let j = 0; j < items[i].length; j++){
+            copyOfArr.push(items[i][j]);
+        }
+    }
+    return copyOfArr
 }
-
-let arr = [1, 2, 3, 4, 5, 6]
-
-console.log(slice(arr, 2, 4))
