@@ -1,16 +1,24 @@
-function findUserByName(arr, findName) {
-  let result = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].name === findName) {
-      result = arr[i];
+// 4. sumSalaries(salaries) → 3900
+// const salaries = {
+//   John: 1000,
+//   Ann: 1600,
+//   Pete: 1300
+// };
+
+function sumSalaries(salaries) {
+  let result = 0;
+  for (const key in salaries) {
+    if (typeof salaries[key] === 'number') {
+      result += salaries[key];
     }
   }
   return result;
 }
-const users = [
-  { name: 'Ivan', age: 22 },
-  { name: 'Anna', age: 19 },
-  { name: 'Oleg', age: 31 },
-];
 
-console.log(findUserByName(users, 'Anna'));
+const salaries1 = {
+  John: 1000,
+  Ann: 1600,
+  Pete: 1300,
+};
+
+console.log(sumSalaries(salaries1));
