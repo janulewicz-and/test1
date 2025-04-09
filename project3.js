@@ -1,24 +1,13 @@
-// 4. sumSalaries(salaries) → 3900
-// const salaries = {
-//   John: 1000,
-//   Ann: 1600,
-//   Pete: 1300
-// };
+// 7. Добавить свойство active: true всем объектам
+const people = [{ name: 'Alice' }, { name: 'Bob' }];
 
-function sumSalaries(salaries) {
-  let result = 0;
-  for (const key in salaries) {
-    if (typeof salaries[key] === 'number') {
-      result += salaries[key];
-    }
+function addToArr(arr) {
+  let result = [];
+  for (const key in arr) {
+    let added = arr[key];
+    added.active = true;
+    result.push(arr[key]);
   }
   return result;
 }
-
-const salaries1 = {
-  John: 1000,
-  Ann: 1600,
-  Pete: 1300,
-};
-
-console.log(sumSalaries(salaries1));
+console.log(addToArr(people));

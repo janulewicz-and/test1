@@ -257,8 +257,62 @@ function arrToObj(arr) {
 let arr1 = ['a: 1', 'b: 2'];
 
 function findUserByName(arr, findName) {
-  arr.forEach((user) => {
-    user.name === findName;
-    return user;
-  });
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].name === findName) {
+      result = arr[i];
+    }
+  }
+  return result;
 }
+const users = [
+  { name: 'Ivan', age: 22 },
+  { name: 'Anna', age: 19 },
+  { name: 'Oleg', age: 31 },
+];
+
+function sumSalaries(salaries) {
+  let result = 0;
+  for (const key in salaries) {
+    if (typeof salaries[key] === 'number') {
+      result += salaries[key];
+    }
+  }
+  return result;
+}
+
+const salaries1 = {
+  John: 1000,
+  Ann: 1600,
+  Pete: 1300,
+};
+
+function countProps(obj) {
+  let result = 0;
+  for (const key in obj) {
+    let number = undefined ? 0 : 1;
+    result += number;
+  }
+  return result;
+}
+
+function filterByPrice(arr, number) {
+  let result = [];
+  for (const key in arr) {
+    if (arr[key].price <= number) {
+      result.push(arr[key].name);
+    }
+  }
+  return result;
+}
+
+function addToArr(arr) {
+  let result = [];
+  for (const key in arr) {
+    let added = arr[key];
+    added.active = true;
+    result.push(arr[key]);
+  }
+  return result;
+}
+console.log(addToArr(people));
