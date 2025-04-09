@@ -237,11 +237,28 @@ function includes(arr, valueTofind, startIndex) {
   return false;
 }
 
-let obj1 = { a: 1, b: 2 };
 function objectToArray(obj) {
-  return Object.entries(obj);
+  let result = [];
+  for (const key in obj) {
+    let j = key + ': ' + obj[key];
+    result.push(j);
+  }
+  return result;
 }
+let obj1 = { a: 1, b: 2 };
 
-function arrayToObject(arr) {
-  return Object.fromEntries(arr);
+function arrToObj(arr) {
+  let result = {};
+  for (let i = 0; i < arr.length; i++) {
+    result[i] = arr[i];
+  }
+  return result;
+}
+let arr1 = ['a: 1', 'b: 2'];
+
+function findUserByName(arr, findName) {
+  arr.forEach((user) => {
+    user.name === findName;
+    return user;
+  });
 }
