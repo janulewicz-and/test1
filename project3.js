@@ -1,9 +1,16 @@
-function arrToObj(arr) {
-  let result = {};
+function findUserByName(arr, findName) {
+  let result = [];
   for (let i = 0; i < arr.length; i++) {
-    result[i] = arr[i];
+    if (arr[i].name === findName) {
+      result = arr[i];
+    }
   }
   return result;
 }
-let arr1 = ['a: 1', 'b: 2'];
-console.log(arrToObj(arr1));
+const users = [
+  { name: 'Ivan', age: 22 },
+  { name: 'Anna', age: 19 },
+  { name: 'Oleg', age: 31 },
+];
+
+console.log(findUserByName(users, 'Anna'));
