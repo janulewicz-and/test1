@@ -1,13 +1,23 @@
-// 7. Добавить свойство active: true всем объектам
-const people = [{ name: 'Alice' }, { name: 'Bob' }];
+// /**
+//  * Функция принимает массив чисел и возвращает объект с двумя свойствами: sum и avg
+//  * @param {number[]} arr - массив чисел
+//  * @returns {object} - объект с двумя свойствами: sum и avg
+//  * @example
+//  * calculate([1, 2, 3])
+//  * // { sum: 6, avg: 2 }
+//  */
+// const calculate = (arr) => {}
 
-function addToArr(arr) {
-  let result = [];
-  for (const key in arr) {
-    let added = arr[key];
-    added.active = true;
-    result.push(arr[key]);
+function sumAvg(arr) {
+  let result = 0;
+  for (let key in arr) {
+    result += arr[key];
   }
-  return result;
+  return {
+    sum: result,
+    avg: result / arr.length,
+  };
 }
-console.log(addToArr(people));
+
+let arr1 = [1, 2, 3];
+console.log(sumAvg(arr1));

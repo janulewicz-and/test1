@@ -316,3 +316,14 @@ function addToArr(arr) {
   return result;
 }
 console.log(addToArr(people));
+
+function sumAvg(arr) {
+  let result = 0;
+  for (let key in arr) {
+    result += arr[key];
+  }
+  return {
+    sum: result,
+    avg: result / arr.length,
+  };
+}
