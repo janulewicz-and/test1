@@ -11,7 +11,8 @@
 function sumAvg(arr) {
   let result = 0;
   for (let key in arr) {
-    result += arr[key];
+    if (typeof arr[key] === 'number') result += arr[key];
+    else return false;
   }
   return {
     sum: result,
@@ -19,5 +20,5 @@ function sumAvg(arr) {
   };
 }
 
-let arr1 = [1, 2, 3];
+let arr1 = [1, 'f', 3];
 console.log(sumAvg(arr1));
