@@ -19,7 +19,7 @@ const purchases = [
   },
 ];
 
-function getTotalSpentByUser(purchasesj) {
+export function getTotalSpentByUser(purchasesj) {
   let result = {};
   for (const index in purchases) {
     const { user, price } = purchases[index];
@@ -28,7 +28,7 @@ function getTotalSpentByUser(purchasesj) {
   return result;
 }
 
-function getMostPopularProduct(purchases) {
+export function getMostPopularProduct(purchases) {
   let result = [];
   for (const index in purchases) {
     const product = purchases[index].product;
@@ -47,7 +47,7 @@ function getMostPopularProduct(purchases) {
 
 console.log(getMostPopularProduct(purchases));
 
-function getTotalByCategory(purchases) {
+export function getTotalByCategory(purchases) {
   let result = {};
   for (const index in purchases) {
     const { category, price } = purchases[index];
@@ -56,14 +56,14 @@ function getTotalByCategory(purchases) {
   return result;
 }
 
-function groupByCategory(purchases) {
-  const newArr = [];
+export function groupByCategory(purchases) {
+  const arrFromObj = [];
 
   for (const user in purchases) {
-    newArr.push(...purchases[user]);
+    arrFromObj.push(...purchases[user]);
   }
   let result = {};
-  for (const index of newArr) {
+  for (const index of arrFromObj) {
     const category = index.category;
     if (!result[category]) {
       result[category] = { totalSpent: 0, products: [] };
@@ -76,7 +76,7 @@ function groupByCategory(purchases) {
   return result;
 }
 
-function getExpensivePurchases(purchases, cost) {
+export function getExpensivePurchases(purchases, cost) {
   let result = [];
   for (const index in purchases) {
     if (purchases[index].price >= cost) {
@@ -86,7 +86,7 @@ function getExpensivePurchases(purchases, cost) {
   return result;
 }
 
-function getUserSortedPurchases(purchases, name) {
+export function getUserSortedPurchases(purchases, name) {
   let result = [];
   for (const index in purchases) {
     if (purchases[index].user === name) {
@@ -97,7 +97,7 @@ function getUserSortedPurchases(purchases, name) {
   return result;
 }
 
-function getTopUsers(purchases, number) {
+export function getTopUsers(purchases, number) {
   let result = [];
   purchases.sort((a, b) => a - b);
   for (let i = 0; i <= number - 1; i++) {
@@ -105,3 +105,5 @@ function getTopUsers(purchases, number) {
   }
   return result;
 }
+
+export function sumByKey() {}

@@ -1,3 +1,13 @@
+import {
+  getTotalSpentByUser,
+  getMostPopularProduct,
+  getTotalByCategory,
+  groupByCategory,
+  getExpensivePurchases,
+  getUserSortedPurchases,
+  getTopUsers,
+} from './project4';
+
 function lettersCheck(a, b) {
   if (b.length > a.length) {
     return false;
@@ -320,7 +330,8 @@ console.log(addToArr(people));
 function sumAvg(arr) {
   let result = 0;
   for (let key in arr) {
-    result += arr[key];
+    if (typeof arr[key] === 'number') result += arr[key];
+    else return false;
   }
   return {
     sum: result,
