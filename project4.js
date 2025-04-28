@@ -19,64 +19,89 @@ const purchases = [
   },
 ];
 
-export function getTotalSpentByUser(purchasesj) {
-  let result = {};
-  for (const index in purchases) {
-    const { user, price } = purchases[index];
-    result[user] = (result[user] || 0) + price;
+export function getTotalSpentByUser(purchases) {
+  if (!Array.isArray(purchases)) {
+    return 'The input data must be an array.';
   }
-  return result;
+  if (purchases.length === 0) {
+    return {};
+  }
+
+  return purchases.reduce((acc, { user, price, quantity }) => {
+    const total = price * quantity;
+    acc[user] = (acc[user] || 0) + total;
+    return acc;
+  }, {});
 }
 
 export function getMostPopularProduct(purchases) {
-  let result = [];
-  for (const index in purchases) {
-    const product = purchases[index].product;
-    result[product] = (result[product] || 0) + 1;
+  if (!Array.isArray(purchases)) {
+    return 'The input data must be an array.';
   }
-  let mostPopularProduct = '';
-  let mostPopProductVol = 0;
-  for (const index in result) {
-    if (result[index] > mostPopProductVol) {
-      mostPopProductVol = result[index];
-      mostPopularProduct = [index].join();
-    }
+  if (purchases.length === 0) {
+    return {};
   }
-  return mostPopularProduct;
+  return Object.entries(
+    purchases.reduce((acc, { product, quantity }) => {
+      acc[product] = (acc[product] || 0) + quantity;
+      return acc;
+    }, {})
+  ).sort((a, b) => b[1] - a[1])[0][0];
 }
 
-console.log(getMostPopularProduct(purchases));
-
 export function getTotalByCategory(purchases) {
-  let result = {};
-  for (const index in purchases) {
-    const { category, price } = purchases[index];
-    result[category] = (result[category] || 0) + price;
+  if (!Array.isArray(purchases)) {
+    return 'The input data must be an array.';
   }
+  if (purchases.length === 0) {
+    return {};
+  }
+  return purchases.reduce((acc, { category, price, quantity }) => {
+    const total = quantity * price;
+    acc[category] = (acc[category] || 0) + total;
+    return acc;
+  }, {});
+}
+
+export function groupByUser(purchases) {
+  if (!Array.isArray(purchases)) {
+    return 'The input data must be an array.';
+  }
+  if (purchases.length === 0) {
+    return {};
+  }
+  let result = {};
+  purchases.forEach((index) => {
+    if (!result[index.user]) {
+      result[index.user] = [];
+    }
+    result[index.user].push(index);
+  });
   return result;
 }
 
 export function groupByCategory(purchases) {
-  const arrFromObj = [];
-
-  for (const user in purchases) {
-    arrFromObj.push(...purchases[user]);
+  if (!Array.isArray(purchases)) {
+    return 'The input data must be an array.';
+  }
+  if (purchases.length === 0) {
+    return {};
   }
   let result = {};
-  for (const index of arrFromObj) {
+  purchases.forEach((index) => {
     const category = index.category;
     if (!result[category]) {
       result[category] = { totalSpent: 0, products: [] };
     }
-    result[category].totalSpent += index.price;
+    result[category].totalSpent += index.price * index.quantity;
     if (!result[category].products.includes(index.product)) {
       result[category].products.push(index.product);
     }
-  }
+  });
   return result;
 }
 
-export function getExpensivePurchases(purchases, cost) {
+function getExpensivePurchases(purchases, cost) {
   let result = [];
   for (const index in purchases) {
     if (purchases[index].price >= cost) {
@@ -86,7 +111,7 @@ export function getExpensivePurchases(purchases, cost) {
   return result;
 }
 
-export function getUserSortedPurchases(purchases, name) {
+function getUserSortedPurchases(purchases, name) {
   let result = [];
   for (const index in purchases) {
     if (purchases[index].user === name) {
@@ -106,4 +131,4 @@ export function getTopUsers(purchases, number) {
   return result;
 }
 
-export function sumByKey() {}
+function sumByKey() {}
