@@ -8,7 +8,7 @@ import {
   groupByCategory,
   getExpensivePurchases,
   getUserSortedPurchases,
-} from './project4';
+} from './myFunctions';
 
 const purchases = [
   { user: 'Alice', product: 'Milk', price: 10, quantity: 2, category: 'Dairy' },
@@ -37,15 +37,17 @@ describe('getTotalSpentByUser', () => {
   });
 
   it('Should return empty object if input array is empty.', () => {
-    expect(getTotalSpentByUser([])).toEqual({});
+    expect(() => getTotalSpentByUser([])).toThrow('The input array is empty.');
   });
 
   it('Should return error message if input is not an array.', () => {
-    expect(getTotalSpentByUser({})).toEqual('The input data must be an array.');
-    expect(getTotalSpentByUser(123)).toEqual(
+    expect(() => getTotalSpentByUser({})).toThrow(
       'The input data must be an array.'
     );
-    expect(getTotalSpentByUser('string')).toEqual(
+    expect(() => getTotalSpentByUser(123)).toThrow(
+      'The input data must be an array.'
+    );
+    expect(() => getTotalSpentByUser('string')).toThrow(
       'The input data must be an array.'
     );
   });
@@ -57,13 +59,17 @@ describe('getTotalByCategory', () => {
   });
 
   it('Should return empty object if input array is empty.', () => {
-    expect(getTotalByCategory([])).toEqual({});
+    expect(() => getTotalByCategory([])).toThrow('The input array is empty.');
   });
 
   it('Should return error message if input is not an array.', () => {
-    expect(getTotalByCategory({})).toEqual('The input data must be an array.');
-    expect(getTotalByCategory(123)).toEqual('The input data must be an array.');
-    expect(getTotalByCategory('string')).toEqual(
+    expect(() => getTotalByCategory({})).toThrow(
+      'The input data must be an array.'
+    );
+    expect(() => getTotalByCategory(123)).toThrow(
+      'The input data must be an array.'
+    );
+    expect(() => getTotalByCategory('string')).toThrow(
       'The input data must be an array.'
     );
   });
@@ -75,17 +81,19 @@ describe('getMostPopularProduct', () => {
   });
 
   it('Should return empty object if input array is empty.', () => {
-    expect(getMostPopularProduct([])).toEqual({});
+    expect(() => getMostPopularProduct([])).toThrow(
+      'The input array is empty.'
+    );
   });
 
   it('Should return error message if input is not an array.', () => {
-    expect(getMostPopularProduct({})).toEqual(
+    expect(() => getMostPopularProduct({})).toThrow(
       'The input data must be an array.'
     );
-    expect(getMostPopularProduct(123)).toEqual(
+    expect(() => getMostPopularProduct(123)).toThrow(
       'The input data must be an array.'
     );
-    expect(getMostPopularProduct('string')).toEqual(
+    expect(() => getMostPopularProduct('string')).toThrow(
       'The input data must be an array.'
     );
   });
@@ -144,13 +152,15 @@ describe('groupByUser', () => {
   });
 
   it('Should return empty object if input array is empty.', () => {
-    expect(groupByUser([])).toEqual({});
+    expect(() => groupByUser([])).toThrow('The input array is empty.');
   });
 
   it('Should return error message if input is not an array.', () => {
-    expect(groupByUser({})).toEqual('The input data must be an array.');
-    expect(groupByUser(123)).toEqual('The input data must be an array.');
-    expect(groupByUser('string')).toEqual('The input data must be an array.');
+    expect(() => groupByUser({})).toThrow('The input data must be an array.');
+    expect(() => groupByUser(123)).toThrow('The input data must be an array.');
+    expect(() => groupByUser('string')).toThrow(
+      'The input data must be an array.'
+    );
   });
 });
 
@@ -169,13 +179,17 @@ describe('groupByCategory', () => {
   });
 
   it('Should return empty object if input array is empty.', () => {
-    expect(groupByCategory([])).toEqual({});
+    expect(() => groupByCategory([])).toThrow('The input array is empty.');
   });
 
   it('Should return error message if input is not an array.', () => {
-    expect(groupByCategory({})).toEqual('The input data must be an array.');
-    expect(groupByCategory(123)).toEqual('The input data must be an array.');
-    expect(groupByCategory('string')).toEqual(
+    expect(() => groupByCategory({})).toThrow(
+      'The input data must be an array.'
+    );
+    expect(() => groupByCategory(123)).toThrow(
+      'The input data must be an array.'
+    );
+    expect(() => groupByCategory('string')).toThrow(
       'The input data must be an array.'
     );
   });
@@ -203,35 +217,31 @@ describe('getExpensivePurchases', () => {
     };
 });
 it('Should return error message if input is not an array.', () => {
-  expect(getExpensivePurchases({}, 2)).toEqual(
+  expect(() => getExpensivePurchases({}, 2)).toThrow(
     'The input data must be an array.'
   );
-  expect(getExpensivePurchases(123, 2)).toEqual(
+  expect(() => getExpensivePurchases(123, 2)).toThrow(
     'The input data must be an array.'
   );
-  expect(getExpensivePurchases('string', 1)).toEqual(
+  expect(() => getExpensivePurchases('string', 1)).toThrow(
     'The input data must be an array.'
   );
 });
 it('should display error massage if second value is not number', () => {
-  expect(getExpensivePurchases(purchases, 'abc')).toEqual(
+  expect(() => getExpensivePurchases(purchases, 'abc')).toThrow(
     'The second value must be a number.'
   );
-  expect(getExpensivePurchases(purchases, {})).toEqual(
+  expect(() => getExpensivePurchases(purchases, {})).toThrow(
     'The second value must be a number.'
   );
-  expect(getExpensivePurchases(purchases, 'abc')).toEqual(
+  expect(() => getExpensivePurchases(purchases, [])).toThrow(
     'The second value must be a number.'
   );
 });
-expect(getExpensivePurchases(purchases, {})).toEqual(
-  'The second value must be a number.'
-);
-expect(getExpensivePurchases(purchases, [])).toEqual(
-  'The second value must be a number.'
-);
 it('Should return empty object if input array is empty.', () => {
-  expect(getExpensivePurchases([], 1)).toEqual({});
+  expect(() => getExpensivePurchases([], 1)).toThrow(
+    'The input array is empty.'
+  );
 });
 
 describe('Should display purchases by user name', () => {
@@ -267,29 +277,31 @@ describe('Should display purchases by user name', () => {
   ]);
 });
 it('Should display error massage if name is not a string', () => {
-  expect(getUserSortedPurchases(purchases, 2)).toEqual(
+  expect(() => getUserSortedPurchases(purchases, 2)).toThrow(
     'The second value must be a string'
   );
-  expect(getUserSortedPurchases(purchases, [])).toEqual(
+  expect(() => getUserSortedPurchases(purchases, [])).toThrow(
     'The second value must be a string'
   );
-  expect(getUserSortedPurchases(purchases, {})).toEqual(
+  expect(() => getUserSortedPurchases(purchases, {})).toThrow(
     'The second value must be a string'
   );
 });
 it('Should return error message if input is not an array.', () => {
-  expect(getUserSortedPurchases({}, 'Alice')).toEqual(
+  expect(() => getUserSortedPurchases({}, 'Alice')).toThrow(
     'The input data must be an array.'
   );
-  expect(getUserSortedPurchases(123, 'Alice')).toEqual(
+  expect(() => getUserSortedPurchases(123, 'Alice')).toThrow(
     'The input data must be an array.'
   );
-  expect(getUserSortedPurchases('string', 'Alice')).toEqual(
+  expect(() => getUserSortedPurchases('string', 'Alice')).toThrow(
     'The input data must be an array.'
   );
 });
 it('Should return empty object if input array is empty.', () => {
-  expect(getUserSortedPurchases([], 'Alice')).toEqual({});
+  expect(() => getUserSortedPurchases([], 'Alice')).toThrow(
+    'The input array is empty.'
+  );
 });
 
 describe('getExpensivePurchases', () => {
@@ -299,33 +311,35 @@ describe('getExpensivePurchases', () => {
     };
 });
 it('Should return error message if input is not an array.', () => {
-  expect(getExpensivePurchases({}, 1)).toEqual(
+  expect(() => getExpensivePurchases({}, 1)).toThrow(
     'The input data must be an array.'
   );
-  expect(getExpensivePurchases(123, 1)).toEqual(
+  expect(() => getExpensivePurchases(123, 1)).toThrow(
     'The input data must be an array.'
   );
-  expect(getExpensivePurchases('string', 1)).toEqual(
+  expect(() => getExpensivePurchases('string', 1)).toThrow(
     'The input data must be an array.'
   );
 });
 it('should display error massage if second value is not number', () => {
-  expect(getExpensivePurchases(purchases, 'abc')).toEqual(
+  expect(() => getExpensivePurchases(purchases, 'abc')).toThrow(
     'The second value must be a number.'
   );
-  expect(getExpensivePurchases(purchases, {})).toEqual(
+  expect(() => getExpensivePurchases(purchases, {})).toThrow(
     'The second value must be a number.'
   );
-  expect(getExpensivePurchases(purchases, 'abc')).toEqual(
+  expect(() => getExpensivePurchases(purchases, 'abc')).toThrow(
     'The second value must be a number.'
   );
 });
-expect(getExpensivePurchases(purchases, {})).toEqual(
+expect(() => getExpensivePurchases(purchases, {})).toThrow(
   'The second value must be a number.'
 );
-expect(getExpensivePurchases(purchases, [])).toEqual(
+expect(() => getExpensivePurchases(purchases, [])).toThrow(
   'The second value must be a number.'
 );
 it('Should return empty object if input array is empty.', () => {
-  expect(getExpensivePurchases([], 1)).toEqual({});
+  expect(() => getExpensivePurchases([], 1)).toThrow(
+    'The input array is empty.'
+  );
 });

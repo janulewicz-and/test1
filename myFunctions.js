@@ -1,30 +1,9 @@
-const purchases = [
-  { user: 'Alice', product: 'Milk', price: 10, quantity: 2, category: 'Dairy' },
-  { user: 'Bob', product: 'Cheese', price: 30, quantity: 1, category: 'Dairy' },
-  {
-    user: 'Alice',
-    product: 'Bread',
-    price: 15,
-    quantity: 1,
-    category: 'Bakery',
-  },
-  { user: 'Alice', product: 'Milk', price: 10, quantity: 1, category: 'Dairy' },
-  { user: 'Bob', product: 'Milk', price: 10, quantity: 3, category: 'Dairy' },
-  {
-    user: 'Alice',
-    product: 'Cake',
-    price: 40,
-    quantity: 1,
-    category: 'Bakery',
-  },
-];
-
 export function getTotalSpentByUser(purchases) {
   if (!Array.isArray(purchases)) {
-    return 'The input data must be an array.';
+    throw new Error('The input data must be an array.');
   }
   if (purchases.length === 0) {
-    return {};
+    throw new Error('The input array is empty.');
   }
 
   return purchases.reduce((acc, { user, price, quantity }) => {
@@ -36,10 +15,10 @@ export function getTotalSpentByUser(purchases) {
 
 export function getMostPopularProduct(purchases) {
   if (!Array.isArray(purchases)) {
-    return 'The input data must be an array.';
+    throw new Error('The input data must be an array.');
   }
   if (purchases.length === 0) {
-    return {};
+    throw new Error('The input array is empty.');
   }
   return Object.entries(
     purchases.reduce((acc, { product, quantity }) => {
@@ -51,10 +30,10 @@ export function getMostPopularProduct(purchases) {
 
 export function getTotalByCategory(purchases) {
   if (!Array.isArray(purchases)) {
-    return 'The input data must be an array.';
+    throw new Error('The input data must be an array.');
   }
   if (purchases.length === 0) {
-    return {};
+    throw new Error('The input array is empty.');
   }
   return purchases.reduce((acc, { category, price, quantity }) => {
     const total = quantity * price;
@@ -65,10 +44,10 @@ export function getTotalByCategory(purchases) {
 
 export function groupByUser(purchases) {
   if (!Array.isArray(purchases)) {
-    return 'The input data must be an array.';
+    throw new Error('The input data must be an array.');
   }
   if (purchases.length === 0) {
-    return {};
+    throw new Error('The input array is empty.');
   }
   let result = {};
   purchases.forEach((index) => {
@@ -82,10 +61,10 @@ export function groupByUser(purchases) {
 
 export function groupByCategory(purchases) {
   if (!Array.isArray(purchases)) {
-    return 'The input data must be an array.';
+    throw new Error('The input data must be an array.');
   }
   if (purchases.length === 0) {
-    return {};
+    throw new Error('The input array is empty.');
   }
   let result = {};
   purchases.forEach((index) => {
@@ -103,26 +82,26 @@ export function groupByCategory(purchases) {
 
 export function getExpensivePurchases(purchases, cost) {
   if (!Array.isArray(purchases)) {
-    return 'The input data must be an array.';
+    throw new Error('The input data must be an array.');
   }
   if (purchases.length === 0) {
-    return {};
+    throw new Error('The input array is empty.');
   }
   if (typeof cost !== 'number') {
-    return 'The second value must be a number.';
+    throw new Error('The second value must be a number.');
   }
   return purchases.filter((index) => index.price >= cost);
 }
 
 export function getUserSortedPurchases(purchases, name) {
   if (typeof name !== 'string') {
-    return 'The second value must be a string';
+    throw new Error('The second value must be a string.');
   }
   if (!Array.isArray(purchases)) {
-    return 'The input data must be an array.';
+    throw new Error('The input data must be an array.');
   }
   if (purchases.length === 0) {
-    return {};
+    throw new Error('The input array is empty.');
   }
   return purchases
     .filter((index) => index.user === name)
@@ -131,10 +110,10 @@ export function getUserSortedPurchases(purchases, name) {
 
 export function getTopUsers(purchases, number) {
   if (!Array.isArray(purchases)) {
-    return 'The input data must be an array.';
+    throw new Error('The input data must be an array.');
   }
   if (typeof number !== 'number' || number <= 0) {
-    return 'The second value must be a positive number.';
+    throw new Error('The second value must be a positive number.');
   }
   let result = [];
   const sortedPurchases = getTotalSpentByUser(purchases);
