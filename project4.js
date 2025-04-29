@@ -101,34 +101,45 @@ export function groupByCategory(purchases) {
   return result;
 }
 
-function getExpensivePurchases(purchases, cost) {
-  let result = [];
-  for (const index in purchases) {
-    if (purchases[index].price >= cost) {
-      result.push(purchases[index]);
-    }
+export function getExpensivePurchases(purchases, cost) {
+  if (!Array.isArray(purchases)) {
+    return 'The input data must be an array.';
   }
-  return result;
+  if (purchases.length === 0) {
+    return {};
+  }
+  if (typeof cost !== 'number') {
+    return 'The second value must be a number.';
+  }
+  return purchases.filter((index) => index.price >= cost);
 }
 
-function getUserSortedPurchases(purchases, name) {
-  let result = [];
-  for (const index in purchases) {
-    if (purchases[index].user === name) {
-      let user = purchases[index];
-      result.push(user);
-    }
+export function getUserSortedPurchases(purchases, name) {
+  if (typeof name !== 'string') {
+    return 'The second value must be a string';
   }
-  return result;
+  if (!Array.isArray(purchases)) {
+    return 'The input data must be an array.';
+  }
+  if (purchases.length === 0) {
+    return {};
+  }
+  return purchases
+    .filter((index) => index.user === name)
+    .sort((a, b) => b.price - a.price);
 }
 
 export function getTopUsers(purchases, number) {
+  if (!Array.isArray(purchases)) {
+    return 'The input data must be an array.';
+  }
+  if (typeof number !== 'number' || number <= 0) {
+    return 'The second value must be a positive number.';
+  }
   let result = [];
-  purchases.sort((a, b) => a - b);
+  const sortedPurchases = getTotalSpentByUser(purchases);
   for (let i = 0; i <= number - 1; i++) {
-    result.push(purchases[i].user);
+    result.push(sortedPurchases[i].user);
   }
   return result;
 }
-
-function sumByKey() {}
