@@ -3,7 +3,7 @@ export function getTotalSpentByUser(purchases) {
     throw new Error('The input data must be an array.');
   }
   if (purchases.length === 0) {
-    throw new Error('The input array is empty.');
+    throw new Error('Error: null');
   }
 
   return purchases.reduce((acc, { user, price, quantity }) => {
@@ -18,7 +18,7 @@ export function getMostPopularProduct(purchases) {
     throw new Error('The input data must be an array.');
   }
   if (purchases.length === 0) {
-    throw new Error('The input array is empty.');
+    throw new Error('Error: null');
   }
   return Object.entries(
     purchases.reduce((acc, { product, quantity }) => {
@@ -33,7 +33,7 @@ export function getTotalByCategory(purchases) {
     throw new Error('The input data must be an array.');
   }
   if (purchases.length === 0) {
-    throw new Error('The input array is empty.');
+    throw new Error('Error: null');
   }
   return purchases.reduce((acc, { category, price, quantity }) => {
     const total = quantity * price;
@@ -47,7 +47,7 @@ export function groupByUser(purchases) {
     throw new Error('The input data must be an array.');
   }
   if (purchases.length === 0) {
-    throw new Error('The input array is empty.');
+    throw new Error('Error: null');
   }
   let result = {};
   purchases.forEach((index) => {
@@ -64,7 +64,7 @@ export function groupByCategory(purchases) {
     throw new Error('The input data must be an array.');
   }
   if (purchases.length === 0) {
-    throw new Error('The input array is empty.');
+    throw new Error('Error: null');
   }
   let result = {};
   purchases.forEach((index) => {
@@ -85,7 +85,7 @@ export function getExpensivePurchases(purchases, cost) {
     throw new Error('The input data must be an array.');
   }
   if (purchases.length === 0) {
-    throw new Error('The input array is empty.');
+    throw new Error('Error: null');
   }
   if (typeof cost !== 'number') {
     throw new Error('The second value must be a number.');
@@ -101,7 +101,7 @@ export function getUserSortedPurchases(purchases, name) {
     throw new Error('The input data must be an array.');
   }
   if (purchases.length === 0) {
-    throw new Error('The input array is empty.');
+    throw new Error('Error: null');
   }
   return purchases
     .filter((index) => index.user === name)
